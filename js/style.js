@@ -40,16 +40,20 @@ insuranceNoButton.addEventListener('click', () => {
 });
 
 function startCountdown(minutes, seconds) {
-    let totalSeconds = minutes * 60 + seconds;
-    const interval = setInterval(() => {
-        const mins = Math.floor(totalSeconds / 60);
-        const secs = totalSeconds % 60;
-        timer.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        if (totalSeconds <= 0) {
-            clearInterval(interval);
-          
-        } else {
-            totalSeconds--;
-        }
-    }, 1000);
+  let totalSeconds = minutes * 60 + seconds;
+  timer.textContent = '2';
+  const interval = setInterval(() => {
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      if (totalSeconds === 0) {
+          timer.textContent = '1:59';
+      } else {
+          timer.textContent = `${mins.toString().padStart(1, '0')}:${secs.toString().padStart(2, '0')}`;
+      }
+      if (totalSeconds <= 0) {
+          clearInterval(interval);
+      } else {
+          totalSeconds--;
+      }
+  }, 1000);
 }
